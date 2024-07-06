@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: kuard
+    version: "2"
+  name: kuard
+  labels:
+    app: kuard
+    version: "2"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kuard
+      version: "2"
+  template:
+    metadata:
+      labels:
+        app: kuard
+        version: "2"
+    spec:
+      containers:
+        - name: kuard
+          image: "gcr.io/kuar-demo/kuard-amd64:2"
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
